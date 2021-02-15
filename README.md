@@ -1,4 +1,6 @@
 #MIT-DeepLearning-Class
+
+
 ![Get Excited!!!](/quality_meme.jpg)
 
 *Welcome to boot camp. We got 2 goals here:*
