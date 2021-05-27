@@ -1,4 +1,4 @@
-#MIT-DeepLearning-Class
+# MIT-DeepLearning-Class
 
 
 ![Get Excited!!!](/quality_meme.jpg)
