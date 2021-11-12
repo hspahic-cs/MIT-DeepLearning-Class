@@ -1,34 +1,54 @@
 import numpy as np
+import random
 import math
 
-def sigmoid_function(val):
-    return (1 / (1 + math.exp(-val)))
+class SinglePerceptron:
+    def __init__(self, input, weights, bias, activation):
+        self.input = np.asarray(input)
+        self.weights = np.asarray(weights)
+        self.bias = bias
+        self.activation = activation
+    
+    def __str__(self):
+        return f"Perceptron Values:\n INPUT = {self.input}\n WEIGHTS = \n{self.weights}\n BIAS = {self.bias}\n ACTIVATION = {self.activation}\n RESULT = {self.runPerceptron()}\n"
+    
+    def runPerceptron(self):
+        result = np.dot(self.input, self.weights) + self.bias
+        return chooseActivation(self.activation, result)
 
-def htan_function(val):
-    return ((math.exp(val) - math.exp(-val)) / (math.exp(val) + math.exp(-val)))
 
-def rec_lin_function(val):
-    if val > 0:
-        return 1
-    else:
-        return 0
+def chooseActivation(activationFx, x):
+    match activationFx:
+        case "sigmoid":
+            return sigmoidFunction(x)
+        case "hyperbolic":
+            return hyperbolicTangent(x)
+        case "RLU":
+            return RLU(x)
+        case _:
+            raise ValueError("Invalid activation function, please enter one of the following: [sigmoid, hyperbolic, RLU] ")
 
-class DenseLayer:
-    '''
-    @ weights : np.array of dimension [# of perceptrons][# of variables] holding weights
-    @ inputs : np.array --> same dim as weights --> holding data inputs
-    '''
-    def __init__(self, weights):
-        self.weights = weights
-        self.bias = np.random.rand(weights.shape[1], 1)
+def sigmoidFunction(x):
+    return 1 / (1 + math.exp(-x))
 
-    def call(self, inputs):
-        for i in range(len(self.weights)):
-            result = htan_function((np.matmul(inputs[i], weights[i].transpose()) + self.bias[i]))
-            print(f"Result for preceptron {i + 1}: {result}")
+def hyperbolicTangent(x):
+    return ((math.exp(x) - math.exp(-x)) / (math.exp(x) + math.exp(-x)))
+
+def RLU(x):
+    return math.max(0, x)
+
+
 
 if __name__ == "__main__":
-    weights = np.random.rand(3,4)
-    inputs = np.random.rand(3,4)#.reshape(3,4)
-    test_layer = DenseLayer(weights)
-    test_layer.call(inputs)
+    myValues = [i for i in range(10)]
+    myWeights = [random.random() for i in range(10)]
+    bias = -25
+    activationfx = "sigmoid"
+    sample = SinglePerceptron(myValues, myWeights, bias, activationfx)
+    print(sample)
+    # print("Inputs: ", sample.input)
+    # print("Weights: " , sample.weights)
+    # print("Bias: " , sample.bias)
+    # print("Activation: " , sample.activation)
+    # print("Perceptron: " , sample.runPerceptron())
+    
