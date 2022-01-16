@@ -37,6 +37,18 @@ def hyperbolicTangent(x):
 def RLU(x):
     return math.max(0, x)
 
+# Derivatives 
+
+def dSigmoidFunction(x):
+    return sigmoidFunction(x) * (1 - sigmoidFunction(x))
+
+def dHyperbolicFunction(x):
+    return 1 - hyperbolicTangent(x) ** 2
+
+def dRLU(x):
+    if RLU(x) > 0:
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
