@@ -16,7 +16,6 @@ class SinglePerceptron:
         result = np.dot(self.input, self.weights) + self.bias
         return chooseActivation(self.activation, result)
 
-
 def chooseActivation(activationFx, x):
     match activationFx:
         case "sigmoid":
@@ -38,7 +37,6 @@ def RLU(x):
     return math.max(0, x)
 
 # Derivatives 
-
 def dSigmoidFunction(x):
     return sigmoidFunction(x) * (1 - sigmoidFunction(x))
 
