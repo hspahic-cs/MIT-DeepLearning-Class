@@ -49,13 +49,13 @@ def dRLU(x):
     return 0
 
 
-if __name__ == "__main__":
-    myValues = [i for i in range(10)]
-    myWeights = [random.random() for i in range(10)]
-    bias = -25
-    activationfx = "sigmoid"
-    sample = SinglePerceptron(myValues, myWeights, bias, activationfx)
-    print(sample)
+# if __name__ == "__main__":
+#     myValues = [i for i in range(10)]
+#     myWeights = [random.random() for i in range(10)]
+#     bias = -25
+#     activationfx = "sigmoid"
+#     sample = SinglePerceptron(myValues, myWeights, bias, activationfx)
+#     print(sample)
     # print("Inputs: ", sample.input)
     # print("Weights: " , sample.weights)
     # print("Bias: " , sample.bias)
